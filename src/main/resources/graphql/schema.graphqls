@@ -1,0 +1,18 @@
+type Query {
+    characters: [Character]
+    character(id: String): Character
+}
+
+type Character {
+    id: String!
+    name: String!
+    height: Float
+    mass: Float
+    hairColor: String
+    skinColor: String
+    eyeColor: String
+    birthYear: String
+    gender: String
+    homeWorld: String
+    species: String
+}

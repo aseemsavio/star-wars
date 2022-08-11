@@ -1,13 +1,10 @@
 package com.asavio.starwars.data
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Character(
     val id: String,
     val name: String,
-    val height: Int?,
-    val mass: Int?,
+    val height: Float?,
+    val mass: Float?,
     val hairColor: String?,
     val skinColor: String?,
     val eyeColor: String?,
