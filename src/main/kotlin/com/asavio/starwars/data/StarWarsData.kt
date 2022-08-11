@@ -13,3 +13,17 @@ data class Character(
     val homeWorld: String?,
     val species: String?
 )
+
+data class Planet(
+    val id: String,
+    val name: String,
+    val rotationPeriod: Int?,
+    val orbitalPeriod: Int?,
+    val diameter: Long?,
+    val climate: String?,
+    val gravity: String?,
+    val terrain: String?,
+    val surfaceWater: Float?,
+    val population: Long?
+)
+

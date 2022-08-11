@@ -1,6 +1,9 @@
 type Query {
     characters: [Character]
     character(id: String): Character
+
+    planets: [Planet]
+    planet(id: String): Planet
 }
 
 type Character {
@@ -15,4 +18,17 @@ type Character {
     gender: String
     homeWorld: String
     species: String
+}
+
+type Planet {
+    id: String!
+    name: String!
+    rotationPeriod: Int
+    orbitalPeriod: Int
+    diameter: Int
+    climate: String
+    gravity: String
+    terrain: String
+    surfaceWater: Float
+    population: Int
 }
