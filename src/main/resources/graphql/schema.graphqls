@@ -4,6 +4,9 @@ type Query {
 
     planets: [Planet]
     planet(id: String): Planet
+
+    species: [Species]
+    singleSpecies(id: String): Species
 }
 
 type Character {
@@ -31,4 +34,18 @@ type Planet {
     terrain: String
     surfaceWater: Float
     population: Int
+}
+
+type Species {
+    id: String!
+    name: String!
+    classification: String
+    designation: String
+    averageHeight: Int
+    skinColors: String
+    hairColors: String
+    eyeColors: String
+    averageLifespan: String
+    language: String
+    homeWorld: String
 }

@@ -27,3 +27,17 @@ data class Planet(
     val population: Long?
 )
 
+data class Species(
+    val id: String,
+    val name: String,
+    val classification: String?,
+    val designation: String?,
+    val averageHeight: Int?,
+    val skinColors: String?,
+    val hairColors: String?,
+    val eyeColors: String?,
+    val averageLifespan: String?,
+    val language: String?,
+    val homeWorld: String?
+)
+
