@@ -25,50 +25,22 @@ val String.stringOrNull
     }
 
 val String.intOrNull
-    get(): Int? {
-        return if (this.isNA()) null else {
-            return try {
-                toInt()
-            } catch (e: NumberFormatException) {
-                replaceCommasAndQuotes().toInt()
-            }
-        }
-    }
+    get(): Int? = value(String::toInt)
 
 val String.floatOrNull
-    get(): Float? {
-        return if (this.isNA()) null else {
-            return try {
-                toFloat()
-            } catch (e: NumberFormatException) {
-                replaceCommasAndQuotes().toFloat()
-            }
-        }
-    }
+    get(): Float? = value(String::toFloat)
 
 val String.longOrNull
-    get(): Long? {
-        return if (this.isNA()) null else {
-            return try {
-                toLong()
-            } catch (e: NumberFormatException) {
-                replaceCommasAndQuotes().toLong()
-            }
-        }
-    }
+    get(): Long? = value(String::toLong)
 
-val String.hello
-    get() = value(String::toLong)
-
-private fun <T : Number> String.value(toT: String.() -> T): T? {
-    return if (this.isNA()) null else {
-        return try {
-            toT()
-        } catch (e: NumberFormatException) {
-            replaceCommasAndQuotes().toT()
-        }
+private fun <T : Number> String.value(toT: String.() -> T): T? = if (this.isNA()) null else {
+    try {
+        toT()
+    } catch (e: NumberFormatException) {
+        replaceCommasAndQuotes().toT()
     }
 }
+
 
 typealias RowsAndColumns = List<List<String>>
 
