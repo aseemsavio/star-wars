@@ -25,7 +25,7 @@ class SpeciesRepository(val species: MutableMap<String, Species> = mutableMapOf(
 
 }
 
-private fun List<List<String>>.species(species: MutableMap<String, Species>) {
+private fun RowsAndColumns.species(species: MutableMap<String, Species>) {
     this.forEach {
         val id = UUID.randomUUID().toString()
         var name: String = ""

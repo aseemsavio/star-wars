@@ -10,10 +10,9 @@ fun List<String>.looseHeader(): List<String> {
     return list
 }
 
-fun List<String>.getRowsAndColumns(): List<List<String>> {
+fun List<String>.getRowsAndColumns(): RowsAndColumns {
     val strings = mutableListOf<List<String>>()
     this.forEach {
-        //val stringsInEachRow = it.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)").toList()
         val stringsInEachRow = it.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)".toRegex())
         strings.add(stringsInEachRow)
     }
@@ -22,38 +21,57 @@ fun List<String>.getRowsAndColumns(): List<List<String>> {
 
 val String.stringOrNull
     get(): String? {
-        return if (this == "NA" || this == "N/A" || this == "n/a") null else this
+        return if (this.isNA()) null else this
     }
 
 val String.intOrNull
     get(): Int? {
-        return if (this == "NA" || this == "N/A" || this == "n/a") null else {
+        return if (this.isNA()) null else {
             return try {
-                this.toInt()
+                toInt()
             } catch (e: NumberFormatException) {
-                this.replace(",", "").replace("\"", "").toInt()
+                replaceCommasAndQuotes().toInt()
             }
         }
     }
 
 val String.floatOrNull
     get(): Float? {
-        return if (this == "NA" || this == "N/A" || this == "n/a") null else {
+        return if (this.isNA()) null else {
             return try {
-                this.toFloat()
+                toFloat()
             } catch (e: NumberFormatException) {
-                this.replace(",", "").replace("\"", "").toFloat()
+                replaceCommasAndQuotes().toFloat()
             }
         }
     }
 
 val String.longOrNull
     get(): Long? {
-        return if (this == "NA" || this == "N/A") null else {
+        return if (this.isNA()) null else {
             return try {
-                this.toLong()
+                toLong()
             } catch (e: NumberFormatException) {
-                this.replace(",", "").replace("\"", "").toLong()
+                replaceCommasAndQuotes().toLong()
             }
         }
     }
+
+val String.hello
+    get() = value(String::toLong)
+
+private fun <T : Number> String.value(toT: String.() -> T): T? {
+    return if (this.isNA()) null else {
+        return try {
+            toT()
+        } catch (e: NumberFormatException) {
+            replaceCommasAndQuotes().toT()
+        }
+    }
+}
+
+typealias RowsAndColumns = List<List<String>>
+
+private fun String.isNA() = this == "NA" || this == "N/A" || this == "n/a"
+
+private fun String.replaceCommasAndQuotes() = this.replace(",", "").replace("\"", "")

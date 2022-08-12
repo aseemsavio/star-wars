@@ -23,7 +23,7 @@ class PlanetRepository(val planets: MutableMap<String, Planet>) {
 
 }
 
-private fun List<List<String>>.planets(planets: MutableMap<String, Planet>) {
+private fun RowsAndColumns.planets(planets: MutableMap<String, Planet>) {
     this.forEach {
         var id: String = UUID.randomUUID().toString()
         var name: String = ""

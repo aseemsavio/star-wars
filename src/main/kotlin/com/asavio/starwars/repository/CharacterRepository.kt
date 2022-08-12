@@ -24,7 +24,7 @@ class CharacterRepository(val characters: MutableMap<String, Character> = mutabl
 
 }
 
-private fun List<List<String>>.characters(characters: MutableMap<String, Character>) {
+private fun RowsAndColumns.characters(characters: MutableMap<String, Character>) {
     this.forEach {
         val id: String = UUID.randomUUID().toString()
         var name = ""

@@ -26,7 +26,7 @@ class StarShipRepository(val starShips: MutableMap<String, StarShip>) {
 
 }
 
-private fun List<List<String>>.starShips(starShips: MutableMap<String, StarShip>) {
+private fun RowsAndColumns.starShips(starShips: MutableMap<String, StarShip>) {
     this.forEach {
         val id = UUID.randomUUID().toString()
         var name = ""
