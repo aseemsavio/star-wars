@@ -41,3 +41,18 @@ data class Species(
     val homeWorld: String?
 )
 
+
+data class StarShip(
+    val id: String,
+    val name: String,
+    val model: String?,
+    val manufacturer: String?,
+    val costInCredit: Long?,
+    val length: Float?,
+    val maxSpeed: String?,
+    val crew: Long?,
+    val passengers: Long?,
+    val cargoCapacity: Long?,
+    val consumables: String?
+)
+

@@ -7,6 +7,9 @@ type Query {
 
     species: [Species]
     singleSpecies(id: String): Species
+
+    starShips: [StarShip]
+    starShip(id: String): StarShip
 }
 
 type Character {
@@ -49,3 +52,19 @@ type Species {
     language: String
     homeWorld: String
 }
+
+
+type StarShip {
+    id: String!
+    name: String!
+    model: String
+    manufacturer: String
+    costInCredit: Int
+    length: Float
+    maxSpeed: String
+    crew: Int
+    passengers: Int
+    cargoCapacity: Int
+    consumables: String
+}
+

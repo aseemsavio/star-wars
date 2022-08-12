@@ -22,12 +22,12 @@ fun List<String>.getRowsAndColumns(): List<List<String>> {
 
 val String.stringOrNull
     get(): String? {
-        return if (this == "NA" || this == "N/A") null else this
+        return if (this == "NA" || this == "N/A" || this == "n/a") null else this
     }
 
 val String.intOrNull
     get(): Int? {
-        return if (this == "NA" || this == "N/A") null else {
+        return if (this == "NA" || this == "N/A" || this == "n/a") null else {
             return try {
                 this.toInt()
             } catch (e: NumberFormatException) {
@@ -38,7 +38,7 @@ val String.intOrNull
 
 val String.floatOrNull
     get(): Float? {
-        return if (this == "NA" || this == "N/A") null else {
+        return if (this == "NA" || this == "N/A" || this == "n/a") null else {
             return try {
                 this.toFloat()
             } catch (e: NumberFormatException) {
