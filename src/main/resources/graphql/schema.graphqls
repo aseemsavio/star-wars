@@ -31,12 +31,12 @@ type Planet {
     name: String!
     rotationPeriod: Int
     orbitalPeriod: Int
-    diameter: Int
+    diameter: String
     climate: String
     gravity: String
     terrain: String
     surfaceWater: Float
-    population: Int
+    population: String
 }
 
 type Species {
@@ -59,12 +59,12 @@ type StarShip {
     name: String!
     model: String
     manufacturer: String
-    costInCredit: Int
+    costInCredit: String
     length: Float
     maxSpeed: String
-    crew: Int
-    passengers: Int
-    cargoCapacity: Int
+    crew: String
+    passengers: String
+    cargoCapacity: String
     consumables: String
 }
 

@@ -29,27 +29,27 @@ class StarShipRepository(val starShips: MutableMap<String, StarShip>) {
 private fun List<List<String>>.starShips(starShips: MutableMap<String, StarShip>) {
     this.forEach {
         val id = UUID.randomUUID().toString()
-        var name: String = ""
+        var name = ""
         var model: String? = null
         var manufacturer: String? = null
-        var costInCredit: Long? = null
+        var costInCredit: String? = null
         var length: Float? = null
         var maxSpeed: String? = null
-        var crew: Long? = null
-        var passengers: Long? = null
-        var cargoCapacity: Long? = null
+        var crew: String? = null
+        var passengers: String? = null
+        var cargoCapacity: String? = null
         var consumables: String? = null
         it.forEachIndexed { index, value ->
             when (index) {
                 0 -> name = value
                 1 -> model = value.stringOrNull
                 2 -> manufacturer = value.stringOrNull
-                3 -> costInCredit = value.longOrNull
+                3 -> costInCredit = value.stringOrNull
                 4 -> length = value.floatOrNull
                 5 -> maxSpeed = value.stringOrNull
-                6 -> crew = value.longOrNull
-                7 -> passengers = value.longOrNull
-                8 -> cargoCapacity = value.longOrNull
+                6 -> crew = value.stringOrNull
+                7 -> passengers = value.stringOrNull
+                8 -> cargoCapacity = value.stringOrNull
                 9 -> consumables = value.stringOrNull
             }
         }

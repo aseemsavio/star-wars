@@ -19,12 +19,12 @@ data class Planet(
     val name: String,
     val rotationPeriod: Int?,
     val orbitalPeriod: Int?,
-    val diameter: Long?,
+    val diameter: String?,
     val climate: String?,
     val gravity: String?,
     val terrain: String?,
     val surfaceWater: Float?,
-    val population: Long?
+    val population: String?
 )
 
 data class Species(
@@ -47,12 +47,12 @@ data class StarShip(
     val name: String,
     val model: String?,
     val manufacturer: String?,
-    val costInCredit: Long?,
+    val costInCredit: String?,
     val length: Float?,
     val maxSpeed: String?,
-    val crew: Long?,
-    val passengers: Long?,
-    val cargoCapacity: Long?,
+    val crew: String?,
+    val passengers: String?,
+    val cargoCapacity: String?,
     val consumables: String?
 )
 

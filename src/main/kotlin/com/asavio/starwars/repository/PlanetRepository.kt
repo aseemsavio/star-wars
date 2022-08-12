@@ -29,23 +29,23 @@ private fun List<List<String>>.planets(planets: MutableMap<String, Planet>) {
         var name: String = ""
         var rotationPeriod: Int? = null
         var orbitalPeriod: Int? = null
-        var diameter: Long? = null
+        var diameter: String? = null
         var climate: String? = null
         var gravity: String? = null
         var terrain: String? = null
         var surfaceWater: Float? = null
-        var population: Long? = null
+        var population: String? = null
         for ((index, value) in it.withIndex()) {
             when (index) {
                 0 -> name = value
                 1 -> rotationPeriod = value.intOrNull
                 2 -> orbitalPeriod = value.intOrNull
-                3 -> diameter = value.longOrNull
+                3 -> diameter = value.stringOrNull
                 4 -> climate = value.stringOrNull
                 5 -> gravity = value.stringOrNull
                 6 -> terrain = value.stringOrNull
                 7 -> surfaceWater = value.floatOrNull
-                8 -> population = value.longOrNull
+                8 -> population = value.stringOrNull
             }
         }
         planets[id] = Planet(
