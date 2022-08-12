@@ -33,7 +33,7 @@ val String.floatOrNull
 val String.longOrNull
     get(): Long? = value(String::toLong)
 
-private fun <T : Number> String.value(toT: String.() -> T): T? = if (this.isNA()) null else {
+private inline fun <T : Number> String.value(toT: String.() -> T): T? = if (this.isNA()) null else {
     try {
         toT()
     } catch (e: NumberFormatException) {
