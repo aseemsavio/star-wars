@@ -37,7 +37,7 @@ private fun RowsAndColumns.characters(characters: MutableMap<String, Character>)
         var gender: String? = null
         var homeWorld: String? = null
         var species = ""
-        for ((index, value) in it.withIndex()) {
+        it.forEachIndexed { index, value ->
             when (index) {
                 0 -> name = value
                 1 -> height = value.floatOrNull

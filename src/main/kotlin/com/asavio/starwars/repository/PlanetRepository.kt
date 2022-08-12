@@ -35,7 +35,7 @@ private fun RowsAndColumns.planets(planets: MutableMap<String, Planet>) {
         var terrain: String? = null
         var surfaceWater: Float? = null
         var population: String? = null
-        for ((index, value) in it.withIndex()) {
+        it.forEachIndexed { index, value ->
             when (index) {
                 0 -> name = value
                 1 -> rotationPeriod = value.intOrNull
