@@ -8,25 +8,24 @@ import java.util.UUID
 import javax.annotation.PostConstruct
 
 @Repository
-class SpeciesRepository(val species: MutableMap<String, Species> = mutableMapOf()) {
+class SpeciesRepository(private val species: MutableMap<String, Species> = mutableMapOf()) {
 
     fun species() = species.values.toList()
 
-    fun singleSpecies(id: String) = species[id] ?: throw RuntimeException("Could not find a species with a provided ID.")
+    fun singleSpecies(id: String) =
+        species[id] ?: throw RuntimeException("Could not find a species with a provided ID.")
 
     @PostConstruct
-    fun init() {
-        readTextFromFile("/source/species.csv")
-            .splitLines()
-            .looseHeader()
-            .getRowsAndColumns()
-            .species(species)
-    }
+    fun init() = readTextFromFile("/source/species.csv")
+        .splitLines()
+        .looseHeader()
+        .getRowsAndColumns()
+        .species(species)
 
 }
 
 private fun RowsAndColumns.species(species: MutableMap<String, Species>) {
-    this.forEach {
+    forEach {
         val id = UUID.randomUUID().toString()
         var name: String = ""
         var classification: String? = null

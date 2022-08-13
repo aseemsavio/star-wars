@@ -8,7 +8,7 @@ import java.util.*
 import javax.annotation.PostConstruct
 
 @Repository
-class StarShipRepository(val starShips: MutableMap<String, StarShip>) {
+class StarShipRepository(private val starShips: MutableMap<String, StarShip>) {
 
     fun starShips() = starShips.values.toList()
 
@@ -16,18 +16,16 @@ class StarShipRepository(val starShips: MutableMap<String, StarShip>) {
         starShips[id] ?: throw RuntimeException("Could not find a star ship with teh provided ID.")
 
     @PostConstruct
-    fun init() {
-        readTextFromFile("/source/starships.csv")
-            .splitLines()
-            .looseHeader()
-            .getRowsAndColumns()
-            .starShips(starShips)
-    }
+    fun init() = readTextFromFile("/source/starships.csv")
+        .splitLines()
+        .looseHeader()
+        .getRowsAndColumns()
+        .starShips(starShips)
 
 }
 
 private fun RowsAndColumns.starShips(starShips: MutableMap<String, StarShip>) {
-    this.forEach {
+    forEach {
         val id = UUID.randomUUID().toString()
         var name = ""
         var model: String? = null

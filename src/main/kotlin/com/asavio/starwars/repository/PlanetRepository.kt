@@ -8,7 +8,7 @@ import java.util.*
 import javax.annotation.PostConstruct
 
 @Repository
-class PlanetRepository(val planets: MutableMap<String, Planet>) {
+class PlanetRepository(private val planets: MutableMap<String, Planet>) {
 
     fun planets() = planets.values.toList()
 

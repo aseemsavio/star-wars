@@ -8,7 +8,7 @@ import java.util.UUID
 import javax.annotation.PostConstruct
 
 @Repository
-class CharacterRepository(val characters: MutableMap<String, Character> = mutableMapOf()) {
+class CharacterRepository(private val characters: MutableMap<String, Character> = mutableMapOf()) {
 
     fun characters() = characters.values.toList()
 
@@ -25,7 +25,7 @@ class CharacterRepository(val characters: MutableMap<String, Character> = mutabl
 }
 
 private fun RowsAndColumns.characters(characters: MutableMap<String, Character>) {
-    this.forEach {
+    forEach {
         val id: String = UUID.randomUUID().toString()
         var name = ""
         var height: Float? = null
