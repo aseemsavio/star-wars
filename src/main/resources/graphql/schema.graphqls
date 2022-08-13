@@ -10,6 +10,9 @@ type Query {
 
     starShips: [StarShip]
     starShip(id: String): StarShip
+
+    vehicles: [Vehicle]
+    vehicle(id: String): Vehicle
 }
 
 type Character {
@@ -68,3 +71,16 @@ type StarShip {
     consumables: String
 }
 
+type Vehicle {
+    id: String!
+    name: String!
+    model: String
+    manufacturer: String
+    costInCredit: String
+    length: Float
+    maxSpeed: String
+    crew: String
+    passengers: String
+    cargoCapacity: String
+    consumables: String
+}

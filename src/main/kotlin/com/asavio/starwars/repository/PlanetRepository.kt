@@ -24,7 +24,7 @@ class PlanetRepository(val planets: MutableMap<String, Planet>) {
 }
 
 private fun RowsAndColumns.planets(planets: MutableMap<String, Planet>) {
-    this.forEach {
+    forEach {
         var id: String = UUID.randomUUID().toString()
         var name: String = ""
         var rotationPeriod: Int? = null

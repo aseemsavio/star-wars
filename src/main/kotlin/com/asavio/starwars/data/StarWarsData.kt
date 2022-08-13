@@ -56,3 +56,16 @@ data class StarShip(
     val consumables: String?
 )
 
+data class Vehicle(
+    val id: String,
+    val name: String,
+    val model: String,
+    val manufacturer: String?,
+    val costInCredit: String?,
+    val length: Float?,
+    val maxSpeed: String?,
+    val crew: String?,
+    val passengers: String?,
+    val cargoCapacity: String?,
+    val consumables: String?
+)

@@ -41,7 +41,6 @@ private inline fun <T : Number> String.value(toT: String.() -> T): T? = if (this
     }
 }
 
-
 typealias RowsAndColumns = List<List<String>>
 
 private fun String.isNA() = this == "NA" || this == "N/A" || this == "n/a"
