@@ -15,6 +15,7 @@ class PlanetRepository(private val planets: MutableMap<String, Planet>) {
     fun planet(id: String) = planets[id] ?: throw RuntimeException("Could not find planet for the provided ID.")
 
     @PostConstruct
+    @Suppress("unused")
     fun init() = readTextFromFile("source/planets.csv")
         .splitLines()
         .looseHeader()
@@ -23,42 +24,41 @@ class PlanetRepository(private val planets: MutableMap<String, Planet>) {
 
 }
 
-private fun RowsAndColumns.planets(planets: MutableMap<String, Planet>) {
-    forEach {
-        var id: String = UUID.randomUUID().toString()
-        var name: String = ""
-        var rotationPeriod: Int? = null
-        var orbitalPeriod: Int? = null
-        var diameter: String? = null
-        var climate: String? = null
-        var gravity: String? = null
-        var terrain: String? = null
-        var surfaceWater: Float? = null
-        var population: String? = null
-        it.forEachIndexed { index, value ->
-            when (index) {
-                0 -> name = value
-                1 -> rotationPeriod = value.intOrNull
-                2 -> orbitalPeriod = value.intOrNull
-                3 -> diameter = value.stringOrNull
-                4 -> climate = value.stringOrNull
-                5 -> gravity = value.stringOrNull
-                6 -> terrain = value.stringOrNull
-                7 -> surfaceWater = value.floatOrNull
-                8 -> population = value.stringOrNull
-            }
+private fun RowsAndColumns.planets(planets: MutableMap<String, Planet>) = forEach {
+    val id: String = UUID.randomUUID().toString()
+    var name = ""
+    var rotationPeriod: Int? = null
+    var orbitalPeriod: Int? = null
+    var diameter: String? = null
+    var climate: String? = null
+    var gravity: String? = null
+    var terrain: String? = null
+    var surfaceWater: Float? = null
+    var population: String? = null
+    it.forEachIndexed { index, value ->
+        when (index) {
+            0 -> name = value
+            1 -> rotationPeriod = value.intOrNull
+            2 -> orbitalPeriod = value.intOrNull
+            3 -> diameter = value.stringOrNull
+            4 -> climate = value.stringOrNull
+            5 -> gravity = value.stringOrNull
+            6 -> terrain = value.stringOrNull
+            7 -> surfaceWater = value.floatOrNull
+            8 -> population = value.stringOrNull
         }
-        planets[id] = Planet(
-            id,
-            name,
-            rotationPeriod,
-            orbitalPeriod,
-            diameter,
-            climate,
-            gravity,
-            terrain,
-            surfaceWater,
-            population
-        )
     }
+    planets[id] = Planet(
+        id,
+        name,
+        rotationPeriod,
+        orbitalPeriod,
+        diameter,
+        climate,
+        gravity,
+        terrain,
+        surfaceWater,
+        population
+    )
 }
+

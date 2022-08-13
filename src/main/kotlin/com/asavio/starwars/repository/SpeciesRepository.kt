@@ -16,6 +16,7 @@ class SpeciesRepository(private val species: MutableMap<String, Species> = mutab
         species[id] ?: throw RuntimeException("Could not find a species with a provided ID.")
 
     @PostConstruct
+    @Suppress("unused")
     fun init() = readTextFromFile("/source/species.csv")
         .splitLines()
         .looseHeader()
@@ -24,45 +25,44 @@ class SpeciesRepository(private val species: MutableMap<String, Species> = mutab
 
 }
 
-private fun RowsAndColumns.species(species: MutableMap<String, Species>) {
-    forEach {
-        val id = UUID.randomUUID().toString()
-        var name: String = ""
-        var classification: String? = null
-        var designation: String? = null
-        var averageHeight: Int? = null
-        var skinColors: String? = null
-        var hairColors: String? = null
-        var eyeColors: String? = null
-        var averageLifespan: String? = null
-        var language: String? = null
-        var homeWorld: String? = null
-        it.forEachIndexed { index, value ->
-            when (index) {
-                0 -> name = value
-                1 -> classification = value.stringOrNull
-                2 -> designation = value.stringOrNull
-                3 -> averageHeight = value.intOrNull
-                4 -> skinColors = value.stringOrNull
-                5 -> hairColors = value.stringOrNull
-                6 -> eyeColors = value.stringOrNull
-                7 -> averageLifespan = value.stringOrNull
-                8 -> language = value.stringOrNull
-                9 -> homeWorld = value.stringOrNull
-            }
+private fun RowsAndColumns.species(species: MutableMap<String, Species>) = forEach {
+    val id = UUID.randomUUID().toString()
+    var name = ""
+    var classification: String? = null
+    var designation: String? = null
+    var averageHeight: Int? = null
+    var skinColors: String? = null
+    var hairColors: String? = null
+    var eyeColors: String? = null
+    var averageLifespan: String? = null
+    var language: String? = null
+    var homeWorld: String? = null
+    it.forEachIndexed { index, value ->
+        when (index) {
+            0 -> name = value
+            1 -> classification = value.stringOrNull
+            2 -> designation = value.stringOrNull
+            3 -> averageHeight = value.intOrNull
+            4 -> skinColors = value.stringOrNull
+            5 -> hairColors = value.stringOrNull
+            6 -> eyeColors = value.stringOrNull
+            7 -> averageLifespan = value.stringOrNull
+            8 -> language = value.stringOrNull
+            9 -> homeWorld = value.stringOrNull
         }
-        species[id] = Species(
-            id,
-            name,
-            classification,
-            designation,
-            averageHeight,
-            skinColors,
-            hairColors,
-            eyeColors,
-            averageLifespan,
-            language,
-            homeWorld
-        )
     }
+    species[id] = Species(
+        id,
+        name,
+        classification,
+        designation,
+        averageHeight,
+        skinColors,
+        hairColors,
+        eyeColors,
+        averageLifespan,
+        language,
+        homeWorld
+    )
 }
+

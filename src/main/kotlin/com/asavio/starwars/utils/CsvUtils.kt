@@ -30,6 +30,8 @@ val String.intOrNull
 val String.floatOrNull
     get(): Float? = value(String::toFloat)
 
+
+@Suppress("unused")
 val String.longOrNull
     get(): Long? = value(String::toLong)
 
